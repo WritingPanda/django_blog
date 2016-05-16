@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts -- {{ title }}</title>
+</head>
+<body>
+
+    <h2>This is the {{ title }} view.</h2>
+
+    {% for obj in obj_list %}
+        <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a><br>
+        {{ obj.content }}<br>
+        {{ obj.updated_on }}<br>
+    {% endfor %}
+
+</body>
+</html>
