@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% include 'posts/includes/stylesheets.html' %}
+    {% block stylesheets %}
+    {% endblock stylesheets %}
+    <title>{% block title %}Blog{% endblock %}</title>
+</head>
+<body>
+
+    {% include 'posts/includes/navbar.html' %}
+
+    <div class="container">
+
+        {% include 'posts/includes/messages.html' %}
+
+        {#  Content  #}
+        {% block content %}
+        {% endblock content %}
+        {#  End Content  #}
+
+    </div>
+
+    {% include 'posts/includes/scripts.html' %}
+    {% block scripts %}
+    {% endblock %}
+
+</body>
+</html>
