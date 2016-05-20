@@ -44,8 +44,8 @@ def posts_create(request):
     return render(request, 'posts/post_form.html', context=context)
 
 
-def posts_detail(request, id=None):
-    instance = get_object_or_404(Post, id=id)
+def posts_detail(request, slug=None):
+    instance = get_object_or_404(Post, slug=slug)
     context = {
         "title": instance.title,
         "instance": instance,
@@ -53,13 +53,12 @@ def posts_detail(request, id=None):
     return render(request, 'posts/post_detail.html', context=context)
 
 
-def posts_update(request, id=None):
-    instance = get_object_or_404(Post, id=id)
+def posts_update(request, slug=None):
+    instance = get_object_or_404(Post, slug=slug)
     form = PostForm(request.POST or None, request.FILES or None, instance=instance)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
-        # message success
         messages.success(request, "Successfully edited!")
         return HttpResponseRedirect(instance.get_absolute_url())
 

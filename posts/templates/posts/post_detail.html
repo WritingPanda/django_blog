@@ -8,8 +8,9 @@
     {% if instance.image %}
         <img src="{{ instance.image.url }}" class="img-responsive">
     {% endif %}
-        <h1>{{ instance.title }}</h1> <small>{{ instance.timestamp }}</small>
+        <h1>{{ instance.title }}</h1> <small>{{ instance.timestamp|timesince }}</small>
         <p>{{ instance.content|linebreaks }}</p>
     </div>
 
 {% endblock content %}
+
